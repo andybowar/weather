@@ -1,6 +1,5 @@
-package WeatherData;
+package CurrentWeather;
 
-import WeatherData.Properties;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -1,4 +1,4 @@
-package WeatherData;
+package CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

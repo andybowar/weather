@@ -1,16 +1,20 @@
-package WeatherData;
+package CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dewpoint {
+public class WindChill {
 
     private Double value;
     private String unitCode;
     private String qualityControl;
 
     public Double getValue() {
-        return value;
+        if (value == null) {
+            return null;
+        } else {
+            return value;
+        }
     }
 
     public String getUnitCode() {
@@ -34,10 +38,13 @@ public class Dewpoint {
     }
 
     public long convertCelToFah() {
-        Double celsius = getValue();
-        Double fah = ((celsius*9/5)+32);
+        if (value == null) {
+            return 0;
+        } else {
+            Double celsius = getValue();
+            Double fah = ((celsius * 9 / 5) + 32);
 
-        return Math.round(fah);
+            return Math.round(fah);
+        }
     }
-
 }

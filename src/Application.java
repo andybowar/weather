@@ -1,4 +1,4 @@
-import WeatherData.WeatherCat;
+import CurrentWeather.WeatherCat;
 import WeatherStation.FindWeatherStation;
 import org.springframework.web.client.RestTemplate;
 
