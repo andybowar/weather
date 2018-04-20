@@ -32,6 +32,16 @@ public class FindWeatherStation {
     ArrayList<Double[]> latLonList = new ArrayList<>();
     List<Double> lengths = new ArrayList<>();
 
+    /** The functions used to determine the nearest weather station to the given
+     * set of coordinates is not necessary because api.weather.com does that for
+     * you when you insert a set of coordinates in the endpoint. The weather
+     * stations are already ordered by proximity to the given coordinates, so
+     * the closest station will always be the first station listed.
+     *
+     * Therefore, this class could be drastically simplified by simply taking
+     * the first set of coordinates from the JSON.
+     */
+
     /**
      * Calculate distance between two points in latitude and longitude taking
      * into account height difference. If you are not interested in height
