@@ -1,5 +1,6 @@
+package WeatherStation;
+
 import CurrentWeather.WeatherCat;
-import WeatherStation.FindWeatherStation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
