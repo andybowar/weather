@@ -22,8 +22,4 @@ public class Application {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-    @Bean
-    public FindWeatherStation findWeatherStation() {
-        return new FindWeatherStation();
-    }
 }
