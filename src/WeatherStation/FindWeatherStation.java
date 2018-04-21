@@ -19,7 +19,7 @@ public class FindWeatherStation {
     private String[] latLonString = latLon.split(",");
 
     @Autowired
-    private RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate;
 
     private List<Features> features;
 
