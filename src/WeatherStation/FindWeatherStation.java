@@ -27,10 +27,10 @@ public class FindWeatherStation {
     private StationsEndpoint stationsEndpoint = restTemplate.getForObject(observationStations, StationsEndpoint.class);
     private List<Features> features = stationsEndpoint.getFeatures();
 
-    ArrayList<Double> latList = new ArrayList<>();
-    ArrayList<Double> lonList = new ArrayList<>();
-    ArrayList<Double[]> latLonList = new ArrayList<>();
-    List<Double> lengths = new ArrayList<>();
+    private ArrayList<Double> latList = new ArrayList<>();
+    private ArrayList<Double> lonList = new ArrayList<>();
+    private ArrayList<Double[]> latLonList = new ArrayList<>();
+    private List<Double> lengths = new ArrayList<>();
 
     /** The functions used to determine the nearest weather station to the given
      * set of coordinates is not necessary because api.weather.com does that for
@@ -52,7 +52,7 @@ public class FindWeatherStation {
      * el2 End altitude in meters
      * @returns Distance in Meters
      */
-    public static double distance(double lat1, double lat2, double lon1,
+    private static double distance(double lat1, double lat2, double lon1,
                                   double lon2, double el1, double el2) {
 
         final int R = 6371; // Radius of the earth
@@ -134,7 +134,7 @@ public class FindWeatherStation {
      */
     // TODO: Make this method a constructor that can take any set of coordinates
     // TODO: and reorder them
-    public String reverseCoords () {
+    private String reverseCoords () {
         // Store index of the smallest value of lengths. Probably will always
         // be 0. This means that either something in here is wrong or the first
         // set of coordinates in latLonList will always be the closest set to
@@ -152,7 +152,7 @@ public class FindWeatherStation {
     }
 
     //Find lowest value in array using loop
-    public static Double getMinValue(List<Double> numbers){
+    private static Double getMinValue(List<Double> numbers) {
         Double minValue = numbers.get(0);
         for(int i = 1; i < numbers.size(); i++){
             if(numbers.get(i) < minValue){
