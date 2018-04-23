@@ -3,34 +3,46 @@ package WeatherStation;
 import WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
 import WeatherStation.StationsEndpoint.Features;
 import WeatherStation.StationsEndpoint.StationsEndpoint;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class FindWeatherStation {
 
     private String latLon = "44.9038,-93.1782";
     private String[] latLonString = latLon.split(",");
 
-    // Get endpoint for the list of observation stations near the given coordinates
-    private RestTemplate restTemplate = new RestTemplate();
-    private CoordinatesEndpoint coordinatesEndpoint = restTemplate
-            .getForObject("https://api.weather.gov/points/"
-                    + latLon, CoordinatesEndpoint.class);
+    @Autowired
+    private RestTemplate restTemplate;
 
-    // observationStations variable now contains URL for the endpoint needed to find the list of observation stations
-    private final String observationStations = coordinatesEndpoint.getProperties().getObservationStations();
-
-    // Stats of each weather station are stored in the 'features' list
-    private StationsEndpoint stationsEndpoint = restTemplate.getForObject(observationStations, StationsEndpoint.class);
-    private List<Features> features = stationsEndpoint.getFeatures();
+    private List<Features> features;
 
     private ArrayList<Double> latList = new ArrayList<>();
     private ArrayList<Double> lonList = new ArrayList<>();
     private ArrayList<Double[]> latLonList = new ArrayList<>();
     private List<Double> lengths = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
+        // Get endpoint for the list of observation stations near the given coordinates
+        CoordinatesEndpoint coordinatesEndpoint = restTemplate
+                .getForObject("https://api.weather.gov/points/"
+                        + latLon, CoordinatesEndpoint.class);
+
+        // observationStations variable now contains URL for the endpoint needed to find the list of observation stations
+        String observationStations = coordinatesEndpoint.getProperties().getObservationStations();
+
+        // Stats of each weather station are stored in the 'features' list
+        StationsEndpoint stationsEndpoint = restTemplate.getForObject(observationStations, StationsEndpoint.class);
+        features = stationsEndpoint.getFeatures();
+
+    }
 
     /** The functions used to determine the nearest weather station to the given
      * set of coordinates is not necessary because api.weather.com does that for
