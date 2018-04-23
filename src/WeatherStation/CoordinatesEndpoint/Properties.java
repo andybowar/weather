@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Properties {
 
     private String observationStations;
-    private String forecastZone;
+    private String forecast;
 
     public String getObservationStations() {
         return observationStations;
@@ -16,11 +16,11 @@ public class Properties {
         this.observationStations = observationStations;
     }
 
-    public String getForecastZone() {
-        return forecastZone;
+    public String getForecast() {
+        return forecast;
     }
 
-    public void setForecastZone(String forecastZone) {
-        this.forecastZone = forecastZone;
+    public void setForecast(String forecast) {
+        this.forecast = forecast;
     }
 }

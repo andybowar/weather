@@ -8,6 +8,7 @@ public class Properties {
     private Temperature temperature;
     private Dewpoint dewpoint;
     private WindChill windChill;
+    private RelativeHumidity relativeHumidity;
 
     public Temperature getTemperature() {
         return temperature;
@@ -21,6 +22,10 @@ public class Properties {
         return windChill;
     }
 
+    public RelativeHumidity getRelativeHumidity() {
+        return relativeHumidity;
+    }
+
     public void setTemperature(Temperature temperature) {
         this.temperature = temperature;
     }
@@ -31,6 +36,10 @@ public class Properties {
 
     public void setWindChill(WindChill windChill) {
         this.windChill = windChill;
+    }
+
+    public void setRelativeHumidity(RelativeHumidity relativeHumidity) {
+        this.relativeHumidity = relativeHumidity;
     }
 }
 

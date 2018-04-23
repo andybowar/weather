@@ -17,6 +17,7 @@ public class FindWeatherStation {
 
     private String latLon = "44.9038,-93.1782";
     private String[] latLonString = latLon.split(",");
+    private String forecastUrl;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -37,11 +38,11 @@ public class FindWeatherStation {
 
         // observationStations variable now contains URL for the endpoint needed to find the list of observation stations
         String observationStations = coordinatesEndpoint.getProperties().getObservationStations();
+        forecastUrl = coordinatesEndpoint.getProperties().getForecast();
 
         // Stats of each weather station are stored in the 'features' list
         StationsEndpoint stationsEndpoint = restTemplate.getForObject(observationStations, StationsEndpoint.class);
         features = stationsEndpoint.getFeatures();
-
     }
 
     /** The functions used to determine the nearest weather station to the given
@@ -84,7 +85,7 @@ public class FindWeatherStation {
         return Math.sqrt(distance);
     }
 
-    public void getCoordinates() {
+    void getCoordinates() {
         for (Features x : features) {
             // Grab each set of coordinates and put them in 'coords' variable
             Double[] coords = x.getGeometry().getCoordinates();
@@ -115,7 +116,7 @@ public class FindWeatherStation {
         //System.out.println(finalCoords);
     }
 
-    public String getStationUrl() {
+    String getStationUrl() {
         // Store index of the smallest value of lengths. Probably will always
         // be 0. This means that either something in here is wrong or the first
         // set of coordinates in latLonList will always be the closest set to
@@ -139,6 +140,10 @@ public class FindWeatherStation {
             }
         }
         return stationUrl;
+    }
+
+    String getForecastUrl() {
+        return forecastUrl;
     }
 
     /** Because JSON provides coordinates as longitude then latitude, we can use

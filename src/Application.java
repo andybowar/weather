@@ -1,5 +1,3 @@
-import CurrentWeather.WeatherCat;
-import WeatherStation.FindWeatherStation;
 import WeatherStation.WeatherApplicationRunner;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
