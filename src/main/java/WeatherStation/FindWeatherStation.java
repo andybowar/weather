@@ -1,8 +1,8 @@
-package WeatherStation;
+package main.java.WeatherStation;
 
-import WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
-import WeatherStation.StationsEndpoint.Features;
-import WeatherStation.StationsEndpoint.StationsEndpoint;
+import main.java.WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
+import main.java.WeatherStation.StationsEndpoint.Features;
+import main.java.WeatherStation.StationsEndpoint.StationsEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

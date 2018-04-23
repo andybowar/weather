@@ -1,4 +1,6 @@
-import WeatherStation.WeatherApplicationRunner;
+package main.java;
+
+import main.java.WeatherStation.WeatherApplicationRunner;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

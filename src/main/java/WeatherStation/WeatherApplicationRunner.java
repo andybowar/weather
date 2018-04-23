@@ -1,8 +1,8 @@
-package WeatherStation;
+package main.java.WeatherStation;
 
-import CurrentWeather.WeatherCat;
-import Forecast.ForecastData;
-import Forecast.Periods;
+import main.java.CurrentWeather.WeatherCat;
+import main.java.Forecast.ForecastData;
+import main.java.Forecast.Periods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

@@ -1,16 +1,24 @@
-package CurrentWeather;
+package main.java.CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.text.DecimalFormat;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Dewpoint {
+public class RelativeHumidity {
 
     private Double value;
     private String unitCode;
     private String qualityControl;
 
-    public Double getValue() {
-        return value;
+    public String getValue() {
+        if (value == null) {
+            return "Cannot find humidity";
+        } else {
+            return "CURRENT HUMIDITY: " + new DecimalFormat("#.##").format(value) + "%";
+        }
+
+
     }
 
     public String getUnitCode() {
@@ -33,11 +41,14 @@ public class Dewpoint {
         this.qualityControl = qualityControl;
     }
 
-    public long convertCelToFah() {
-        Double celsius = getValue();
-        Double fah = ((celsius*9/5)+32);
-
-        return Math.round(fah);
-    }
-
+    //public long convertCelToFah() {
+    //    if (value == null) {
+    //        return 0;
+    //    } else {
+    //        Double celsius = getValue();
+    //        Double fah = ((celsius * 9 / 5) + 32);
+//
+    //        return Math.round(fah);
+    //    }
+    //}
 }

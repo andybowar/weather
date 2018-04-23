@@ -1,4 +1,4 @@
-package Forecast;
+package main.java.Forecast;
 
 public class Periods {
     private int number;

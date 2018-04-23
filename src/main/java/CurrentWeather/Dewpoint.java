@@ -1,9 +1,9 @@
-package CurrentWeather;
+package main.java.CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Temperature {
+public class Dewpoint {
 
     private Double value;
     private String unitCode;

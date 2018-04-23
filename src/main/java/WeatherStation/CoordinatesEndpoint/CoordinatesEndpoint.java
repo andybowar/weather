@@ -1,15 +1,11 @@
-package CurrentWeather;
+package main.java.WeatherStation.CoordinatesEndpoint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherCat {
+public class CoordinatesEndpoint {
 
     private Properties properties;
-
-    public WeatherCat() {
-
-    }
 
     public Properties getProperties() {
         return properties;

@@ -1,7 +1,6 @@
-package WeatherStation.StationsEndpoint;
+package main.java.WeatherStation.StationsEndpoint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Coordinates {
