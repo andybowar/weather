@@ -22,7 +22,6 @@ public class WeatherApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        findWeatherStation.getCoordinates();
         String stationUrl = findWeatherStation.getStationUrl();
         String forecastUrl = findWeatherStation.getForecastUrl();
 
@@ -34,6 +33,7 @@ public class WeatherApplicationRunner implements ApplicationRunner {
         final long windChill = weatherCat.getProperties().getWindChill().convertCelToFah();
         final String relativeHumidity = weatherCat.getProperties().getRelativeHumidity().getValue();
 
+        System.out.println("*** CURRENT CONDITIONS ***");
         System.out.println("\nCURRENT TEMP: " + tempValue + " DEGREES.");
         System.out.println("CURRENT DEWPOINT: " + dewpoint + " DEGREES.");
 
@@ -47,7 +47,7 @@ public class WeatherApplicationRunner implements ApplicationRunner {
 
         final List<Periods> forecast = forecastData.getProperties().getPeriods();
 
-        System.out.println("*** FORECAST ***");
+        System.out.println("\n*** FORECAST ***");
         for (Periods f : forecast) {
             System.out.println("\n" + f.getName() + ": ");
             System.out.println("HIGH TEMP: " + f.getTemperature());
