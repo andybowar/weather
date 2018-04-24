@@ -1,5 +1,8 @@
 package main.java.WeatherStation;
 
+import main.java.GetCoordinates.FindCoordinates;
+import main.java.GetCoordinates.Results;
+import main.java.GetCoordinates.ZipCode.GetZip;
 import main.java.WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
 import main.java.WeatherStation.StationsEndpoint.Features;
 import main.java.WeatherStation.StationsEndpoint.StationsEndpoint;
@@ -19,10 +22,30 @@ public class FindWeatherStation {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private GetZip getZip;
+
     @PostConstruct
     public void init() {
+
+        String zipCode = getZip.getZipCode();
+
+        // Hits Google's Geocode API to find coordinates based on a given zip code
+        FindCoordinates findCoordinates = restTemplate.getForObject("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + zipCode, FindCoordinates.class);
+        List<Results> results = findCoordinates.getResults();
+
+        // TODO: Add API authentication
+        // Lat and Lng are two separate fields in the Geocode JSON, and
+        // the list is contains only one element, so the lat/lon are
+        // always the in the first index.
+        Double lat = results.get(0).getGeometry().getLocation().getLat();
+        Double lng = results.get(0).getGeometry().getLocation().getLng();
+
+        // Concatenate lat/lon into a single string
+        String latLon = String.valueOf(lat) + "," + String.valueOf(lng);
+
         // Get endpoint for the list of observation stations near the given coordinates
-        String latLon = "44.9038,-93.1782";
+        //String latLon = "44.9038,-93.1782";
         CoordinatesEndpoint coordinatesEndpoint = restTemplate
                 .getForObject("https://api.weather.gov/points/"
                         + latLon, CoordinatesEndpoint.class);

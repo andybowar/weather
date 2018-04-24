@@ -15,13 +15,14 @@ import java.util.List;
 public class WeatherApplicationRunner implements ApplicationRunner {
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    FindWeatherStation findWeatherStation;
+    private FindWeatherStation findWeatherStation;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
         String stationUrl = findWeatherStation.getStationUrl();
         String forecastUrl = findWeatherStation.getForecastUrl();
 
@@ -32,8 +33,9 @@ public class WeatherApplicationRunner implements ApplicationRunner {
         final long dewpoint = weatherCat.getProperties().getDewpoint().convertCelToFah();
         final long windChill = weatherCat.getProperties().getWindChill().convertCelToFah();
         final String relativeHumidity = weatherCat.getProperties().getRelativeHumidity().getValue();
+        final List<Periods> forecast = forecastData.getProperties().getPeriods();
 
-        System.out.println("*** CURRENT CONDITIONS ***");
+        System.out.println("\n*** CURRENT CONDITIONS ***");
         System.out.println("\nCURRENT TEMP: " + tempValue + " DEGREES.");
         System.out.println("CURRENT DEWPOINT: " + dewpoint + " DEGREES.");
 
@@ -45,7 +47,6 @@ public class WeatherApplicationRunner implements ApplicationRunner {
 
         System.out.println(relativeHumidity);
 
-        final List<Periods> forecast = forecastData.getProperties().getPeriods();
 
         System.out.println("\n*** FORECAST ***");
         for (Periods f : forecast) {

@@ -1,5 +1,6 @@
 package main.java;
 
+import main.java.GetCoordinates.ZipCode.GetZip;
 import main.java.WeatherStation.WeatherApplicationRunner;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,5 +22,10 @@ public class Application {
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public GetZip getZip() {
+        return new GetZip();
     }
 }
