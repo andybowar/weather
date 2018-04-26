@@ -1,4 +1,4 @@
-package main.java.CurrentWeather;
+package CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,8 +17,6 @@ public class RelativeHumidity {
         } else {
             return "CURRENT HUMIDITY: " + new DecimalFormat("#.##").format(value) + "%";
         }
-
-
     }
 
     public String getUnitCode() {

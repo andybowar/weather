@@ -1,4 +1,4 @@
-package main.java.WeatherStation.CoordinatesEndpoint;
+package WeatherStation.CoordinatesEndpoint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

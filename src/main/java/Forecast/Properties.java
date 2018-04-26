@@ -1,4 +1,4 @@
-package main.java.Forecast;
+package Forecast;
 
 import java.util.List;
 

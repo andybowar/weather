@@ -1,4 +1,4 @@
-package main.java.CurrentWeather;
+package CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -9,7 +9,10 @@ public class Temperature {
     private String unitCode;
     private String qualityControl;
 
-    public Double getValue() {
+    private Double getValue() {
+        if (value == null) {
+            return null;
+        }
         return value;
     }
 
@@ -34,10 +37,14 @@ public class Temperature {
     }
 
     public long convertCelToFah() {
-        Double celsius = getValue();
-        Double fah = ((celsius*9/5)+32);
+        if (value == null) {
+            return 0;
+        } else {
+            Double celsius = getValue();
+            Double fah = ((celsius * 9 / 5) + 32);
 
-        return Math.round(fah);
+            return Math.round(fah);
+        }
     }
 
 }

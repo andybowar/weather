@@ -1,4 +1,4 @@
-package main.java.Forecast;
+package Forecast;
 
 public class ForecastData {
     private Properties properties;

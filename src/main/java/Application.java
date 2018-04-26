@@ -1,7 +1,7 @@
-package main.java;
-
-import main.java.GetCoordinates.ZipCode.GetZip;
-import main.java.WeatherStation.WeatherApplicationRunner;
+import GetCoordinates.FindCoordinates;
+import GetCoordinates.Results;
+import GetCoordinates.ZipCode.GetZip;
+import WeatherStation.WeatherApplicationRunner;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -27,5 +27,15 @@ public class Application {
     @Bean
     public GetZip getZip() {
         return new GetZip();
+    }
+
+    @Bean
+    public Results results() {
+        return new Results();
+    }
+
+    @Bean
+    public FindCoordinates findCoordinates() {
+        return new FindCoordinates();
     }
 }

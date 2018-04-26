@@ -1,11 +1,11 @@
-package main.java.WeatherStation;
+package WeatherStation;
 
-import main.java.GetCoordinates.FindCoordinates;
-import main.java.GetCoordinates.Results;
-import main.java.GetCoordinates.ZipCode.GetZip;
-import main.java.WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
-import main.java.WeatherStation.StationsEndpoint.Features;
-import main.java.WeatherStation.StationsEndpoint.StationsEndpoint;
+import GetCoordinates.FindCoordinates;
+import GetCoordinates.Results;
+import GetCoordinates.ZipCode.GetZip;
+import WeatherStation.CoordinatesEndpoint.CoordinatesEndpoint;
+import WeatherStation.StationsEndpoint.Features;
+import WeatherStation.StationsEndpoint.StationsEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -32,6 +32,7 @@ public class FindWeatherStation {
 
         // Hits Google's Geocode API to find coordinates based on a given zip code
         FindCoordinates findCoordinates = restTemplate.getForObject("http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=" + zipCode, FindCoordinates.class);
+        findCoordinates.getStatus();
         List<Results> results = findCoordinates.getResults();
 
         // TODO: Add API authentication
@@ -67,5 +68,4 @@ public class FindWeatherStation {
     String getForecastUrl() {
         return forecastUrl;
     }
-
 }

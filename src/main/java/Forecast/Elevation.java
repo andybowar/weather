@@ -1,4 +1,4 @@
-package main.java.Forecast;
+package Forecast;
 
 public class Elevation {
     private Double value;

@@ -1,4 +1,4 @@
-package main.java.CurrentWeather;
+package CurrentWeather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -9,7 +9,7 @@ public class WindChill {
     private String unitCode;
     private String qualityControl;
 
-    public Double getValue() {
+    private Double getValue() {
         if (value == null) {
             return null;
         } else {

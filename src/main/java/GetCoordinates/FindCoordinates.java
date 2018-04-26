@@ -1,4 +1,4 @@
-package main.java.GetCoordinates;
+package GetCoordinates;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,8 +18,13 @@ public class FindCoordinates {
         return results;
     }
 
-    public String getStatus() {
-        return status;
+    public void getStatus() {
+        if(status.equals("OVER_QUERY_LIMIT")) {
+            System.out.println("Too many queries. Please Try again later.");
+            System.exit(0);
+        } else {
+            System.out.println("Status: " + status);
+        }
     }
 
     public void setResults(List<Results> results) {

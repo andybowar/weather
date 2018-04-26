@@ -1,4 +1,4 @@
-package main.java.GetCoordinates;
+package GetCoordinates;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

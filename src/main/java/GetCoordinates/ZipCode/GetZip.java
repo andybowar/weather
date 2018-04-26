@@ -1,4 +1,4 @@
-package main.java.GetCoordinates.ZipCode;
+package GetCoordinates.ZipCode;
 
 import org.springframework.stereotype.Component;
 

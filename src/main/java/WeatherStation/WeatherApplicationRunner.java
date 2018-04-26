@@ -1,8 +1,10 @@
-package main.java.WeatherStation;
+package WeatherStation;
 
-import main.java.CurrentWeather.WeatherCat;
-import main.java.Forecast.ForecastData;
-import main.java.Forecast.Periods;
+import CurrentWeather.WeatherCat;
+import Forecast.ForecastData;
+import Forecast.Periods;
+import GetCoordinates.FindCoordinates;
+import GetCoordinates.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -20,6 +22,9 @@ public class WeatherApplicationRunner implements ApplicationRunner {
     @Autowired
     private FindWeatherStation findWeatherStation;
 
+    @Autowired
+    private Results results;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -34,10 +39,23 @@ public class WeatherApplicationRunner implements ApplicationRunner {
         final long windChill = weatherCat.getProperties().getWindChill().convertCelToFah();
         final String relativeHumidity = weatherCat.getProperties().getRelativeHumidity().getValue();
         final List<Periods> forecast = forecastData.getProperties().getPeriods();
+        final String location = results.getFormatted_address();
+
+        System.out.println("\n*** LOCATION ***");
+        System.out.println(location);
 
         System.out.println("\n*** CURRENT CONDITIONS ***");
-        System.out.println("\nCURRENT TEMP: " + tempValue + " DEGREES.");
-        System.out.println("CURRENT DEWPOINT: " + dewpoint + " DEGREES.");
+        if (tempValue == 0.00) {
+            System.out.println("\nCannot get temperature.");
+        } else {
+            System.out.println("\nCURRENT TEMP: " + tempValue + " DEGREES.");
+        }
+
+        if (dewpoint == 0.00) {
+            System.out.println("Cannot get dewpoint.");
+        } else {
+            System.out.println("CURRENT DEWPOINT: " + dewpoint + " DEGREES.");
+        }
 
         if (windChill == 0) {
             System.out.println("No wind chill.");
