@@ -19,11 +19,16 @@ public class FindCoordinates {
     }
 
     public void getStatus() {
-        if(status.equals("OVER_QUERY_LIMIT")) {
-            System.out.println("Too many queries. Please Try again later.");
-            System.exit(0);
-        } else {
-            System.out.println("Status: " + status);
+        switch (status) {
+            case "OVER_QUERY_LIMIT":
+                System.out.println("Too many queries. Please Try again later.");
+                System.exit(0);
+            case "ZERO_RESULTS":
+                System.out.println("Invalid zip code.");
+                System.exit(0);
+            default:
+                System.out.println("Status: " + status);
+                break;
         }
     }
 

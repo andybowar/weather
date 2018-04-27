@@ -1,5 +1,6 @@
 import GetCoordinates.FindCoordinates;
 import GetCoordinates.Results;
+import GetCoordinates.SaveLocation;
 import GetCoordinates.ZipCode.GetZip;
 import WeatherStation.WeatherApplicationRunner;
 import org.springframework.boot.Banner;
@@ -37,5 +38,10 @@ public class Application {
     @Bean
     public FindCoordinates findCoordinates() {
         return new FindCoordinates();
+    }
+
+    @Bean
+    public SaveLocation saveLocation() {
+        return new SaveLocation();
     }
 }

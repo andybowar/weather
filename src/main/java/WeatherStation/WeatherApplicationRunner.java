@@ -39,7 +39,7 @@ public class WeatherApplicationRunner implements ApplicationRunner {
         final long windChill = weatherCat.getProperties().getWindChill().convertCelToFah();
         final String relativeHumidity = weatherCat.getProperties().getRelativeHumidity().getValue();
         final List<Periods> forecast = forecastData.getProperties().getPeriods();
-        final String location = results.getFormatted_address();
+        final String location = findWeatherStation.getLocation();
 
         System.out.println("\n*** LOCATION ***");
         System.out.println(location);
